@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malinda Torque & Fluids</title>
+<title>SPAREXPRESS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -65,7 +65,7 @@
   .feature-card { background: var(--bg3); padding: 36px 32px; }
   .feature-icon { margin-bottom: 18px; }
   .feature-icon svg { width: 62px; height: 52px; fill: var(--orange); }
-  .feature-title { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .feature-title { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
   .feature-text { font-size: 16px; color: var(--muted); line-height: 1.6; }
 
   /* SECTION */
@@ -213,7 +213,7 @@
     <div class="icon-wrap">
       <svg viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
     </div>
-    <span class="nav-logo-text">MALINDA<span> SPARES</span></span>
+    <span class="nav-logo-text">SPARE <span>XPRESS</span></span>
   </div>
   <ul class="nav-links">
     <li><a href="#" class="active" onclick="showPage('home', this)">HOME</a></li>
@@ -238,7 +238,7 @@
     <div class="hero-content">
       <p class="hero-tag">TRUSTED SINCE 2025</p>
       <h1 class="hero-headline">BUILT TO <span class="accent">DRIVE.</span><br>PRICED TO MOVE.</h1>
-      <p class="hero-sub">Engine oils, filters, brakes, batteries and more — delivered to your door or ready for pickup.</p>
+      <p class="hero-sub">Engine oils, body parts, filters, brakes, batteries and more delivered to your door or ready for pickup.</p>
       <div class="hero-btns">
         <button class="btn-primary" onclick="showPage('shop', null)">SHOP PARTS →</button>
         <button class="btn-secondary" onclick="showPage('contact', null)">GET A QUOTE</button>
@@ -282,7 +282,74 @@
     </div>
     <div class="product-grid" id="featuredGrid"></div>
   </section>
-</div>
+
+  <!-- BODY PARTS SECTION -->
+  <section style="background:var(--bg2);">
+    <div class="section-header">
+      <div>
+        <p class="section-label">BODY PARTS</p>
+        <h2 class="section-title">BODY PARTS & PANELS</h2>
+      </div>
+      <span class="view-all" onclick="showPage('shop', null)">VIEW ALL →</span>
+    </div>
+    <p style="color:var(--muted); margin-bottom:18px;">We stock bumpers, doors, wings, hoods, mirrors, headlights and more. If the exact part you need is not on the featured list, send us your VIN and we'll source it for you.</p>
+    <div class="product-grid">
+      <div class="product-card-mini">
+        <div class="product-cat-mini">BUMPERS</div>
+        <div class="product-name-mini">Front Bumper</div>
+        <div class="product-size-mini">Various models</div>
+        <div class="product-price-mini">From R1,200</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">DOORS</div>
+        <div class="product-name-mini">Front Door</div>
+        <div class="product-size-mini">Left / Right</div>
+        <div class="product-price-mini">From R1,800</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">DOORS</div>
+        <div class="product-name-mini">Back Door</div>
+        <div class="product-size-mini">Left / Right</div>
+        <div class="product-price-mini">From R1,400</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">FENDERS</div>
+        <div class="product-name-mini">Front Fender</div>
+        <div class="product-size-mini">OEM Fit</div>
+        <div class="product-price-mini">From R950</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">FENDERS</div>
+        <div class="product-name-mini">Back Fender</div>
+        <div class="product-size-mini">OEM Fit</div>
+        <div class="product-price-mini">From R750</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">HOODS</div>
+        <div class="product-name-mini">Bonnet / Hood</div>
+        <div class="product-size-mini">Multiple makes</div>
+        <div class="product-price-mini">From R2,500</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">LIGHTS</div>
+        <div class="product-name-mini">Headlight</div>
+        <div class="product-size-mini">Left / Right</div>
+        <div class="product-price-mini">From R650</div>
+      </div>
+      <div class="product-card-mini">
+        <div class="product-cat-mini">MIRRORS</div>
+        <div class="product-name-mini">Side Mirror</div>
+        <div class="product-size-mini">Electric / Manual</div>
+        <div class="product-price-mini">From R420</div>
+      </div>
+    </div>
+    <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
+      <button class="btn-primary" onclick="showPage('contact', null)">SEND VIN ENQUIRY →</button>
+      <button class="btn-secondary" onclick="showPage('shop', null)">BROWSE ALL BODY PARTS</button>
+    </div>
+  </section>
+
+  </div>
 
 <!-- SHOP PAGE -->
 <div id="shop-page" class="page">
@@ -297,6 +364,7 @@
       <button class="tab" onclick="filterProducts('BRAKES', this)">BRAKES</button>
       <button class="tab" onclick="filterProducts('ELECTRICAL', this)">ELECTRICAL</button>
       <button class="tab" onclick="filterProducts('ENGINE', this)">ENGINE</button>
+      <button class="tab" onclick="filterProducts('BODY', this)">BODY PARTS</button>
     </div>
   </div>
   <div class="shop-grid" id="shopGrid"></div>
@@ -308,8 +376,8 @@
     <p class="section-label">OUR STORY</p>
     <h2 class="section-title" style="margin-bottom:32px;">ABOUT US</h2>
     <div class="about-inner">
-      <p>Malinda Torque & Fluids has been serving drivers and workshops across Johannesburg since 2014. What started as a small parts supplier has grown into one of the most trusted names for quality automotive fluids, filters, brakes, and electrical components in the area.</p>
-      <p>We stock only OE-specification and top-brand products, every single item carrying a warranty. Whether you're a DIY enthusiast, an independent workshop, or a fleet operator — we've got your car's needs covered at prices that make sense.</p>
+      <p>SPAREXPRESS has been serving drivers and workshops across South Africa since 2025. What started as a small parts supplier has grown into one of the most trusted names for quality automotive fluids, filters, brakes, and electrical components in the area.</p>
+      <p>We stock only OE-specification and top-brand products, every single item carrying a warranty. Whether you're a DIY enthusiast, an independent workshop, or a fleet operator, we've got your car's needs covered at prices that make sense.</p>
       <p>Can't find what you need in our catalogue? Send us your VIN and we'll source the exact part for your vehicle.</p>
     </div>
     <div class="about-stats">
@@ -381,7 +449,7 @@
         <div class="icon-wrap">
           <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#0e0e0e;"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
         </div>
-        <span class="nav-logo-text" style="font-size:14px;">MALINDA <span>SPARES</span></span>
+        <span class="nav-logo-text" style="font-size:14px;">SPARE <span>XPRESS</span></span>
       </div>
       <p>Quality car parts and fluids. Delivery & pickup across the area.</p>
     </div>
@@ -396,7 +464,7 @@
       <p>Mon–Sat: 07:30 – 17:30</p>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Malinda Torque & Fluids. All prices in ZAR.</div>
+  <div class="footer-bottom">© 2026 SPAREXPRESS. All prices in ZAR.</div>
 </footer>
 
 <!-- CART MODAL -->
@@ -467,18 +535,47 @@
 
 <script>
 const products = [
-  { id: 1, cat: 'FLUIDS', name: 'Engine Oil 5W-30 Synthetic', size: '5L', desc: 'Premium fully synthetic motor oil for modern petrol & diesel engines.', price: 449 },
+  
+{ id: 1, cat: 'FLUIDS', name: 'Engine Oil 5W-30 Synthetic', size: '5L', desc: 'Premium fully synthetic motor oil for modern petrol & diesel engines.', price: 449 },
   { id: 2, cat: 'FLUIDS', name: 'Brake Fluid DOT 4', size: '500ml', desc: 'High-boiling-point brake fluid suitable for ABS systems.', price: 89 },
   { id: 3, cat: 'FLUIDS', name: 'Coolant / Antifreeze', size: '5L', desc: 'Long-life ethylene glycol coolant. Pre-mixed, ready to use.', price: 159 },
   { id: 4, cat: 'FLUIDS', name: 'Power Steering Fluid', size: '1L', desc: 'Universal hydraulic fluid for power steering systems.', price: 119 },
+  { id: 28, cat: 'FLUIDS', name: 'Transmission fluid', size: '2L', desc: 'Universal hydraulic fluid for tramission system.', price: 240 },
+  { id: 29, cat: 'FLUIDS', name: 'Differential fluid', size: '1L', desc: 'Specialized, thick lubricant for the differential system.', price: 200 },
+
+  
   { id: 5, cat: 'FILTERS', name: 'Oil Filter', size: '', desc: 'Spin-on oil filter — fits most popular makes.', price: 95 },
   { id: 6, cat: 'FILTERS', name: 'Air Filter', size: '', desc: 'OE-spec air filter for clean combustion and efficiency.', price: 145 },
+  
+  
   { id: 7, cat: 'BRAKES', name: 'Front Brake Pads', size: '', desc: 'Low-dust ceramic brake pads — set of 4.', price: 599 },
   { id: 8, cat: 'BRAKES', name: 'Brake Disc (Pair)', size: '', desc: 'Vented brake rotors, precision balanced.', price: 1299 },
+  
+  
   { id: 9, cat: 'ELECTRICAL', name: 'Car Battery 12V 65AH', size: '', desc: 'Maintenance-free battery with 24-month warranty.', price: 1850 },
   { id: 10, cat: 'ELECTRICAL', name: 'Spark Plugs (Set of 4)', size: '', desc: 'Iridium-tipped spark plugs for optimal ignition.', price: 249 },
-  { id: 11, cat: 'ENGINE', name: 'Timing Belt Kit', size: '', desc: 'Complete timing belt replacement kit including tensioner.', price: 895 },
   { id: 12, cat: 'ELECTRICAL', name: 'Wiper Blades (Pair)', size: '', desc: 'All-season silicone wiper blades for clear visibility.', price: 185 },
+
+
+  { id: 11, cat: 'ENGINE', name: 'Timing Belt Kit', size: '', desc: 'Complete timing belt replacement kit including tensioner.', price: 895 },
+
+  
+  
+  { id: 13, cat: 'BODY', name: 'Front Bumper', size: '', desc: 'Front bumper — various makes, primed and ready.', price: 1200 },
+  { id: 14, cat: 'BODY', name: 'Back Bumper', size: '', desc: 'Back bumper — various makes, primed and ready.', price: 1400 },
+  { id: 15, cat: 'BODY', name: 'Front Door (EACH)', size: '', desc: 'OE-fit front door.', price: 1800 },
+  { id: 16, cat: 'BODY', name: 'Front Fender (EACH)', size: '', desc: 'Front fender — OEM fitment.', price: 950 },
+  { id: 17, cat: 'BODY', name: 'Back Fender (EACH)', size: '', desc: 'Front fender — OEM fitment.', price: 750 },
+  { id: 24, cat: 'BODY', name: 'Seat (FRONT)', size: '', desc: 'Front seat each — various makes.', price: 520 },
+  { id: 25, cat: 'BODY', name: 'Seat (BACK)', size: '', desc: 'Back seat each — various makes.', price: 520 },
+  { id: 18, cat: 'BODY', name: 'Bonnet / Hood', size: '', desc: 'Bonnet / hood for multiple models.', price: 2500 },
+  { id: 19, cat: 'BODY', name: 'Headlight (EACH)', size: '', desc: 'Original style headlight assembly.', price: 650 },
+  { id: 20, cat: 'BODY', name: 'Taillight (EACH)', size: '', desc: 'Original style tailight assembly.', price: 600 },
+  { id: 21, cat: 'BODY', name: 'Side Mirror (Electric)', size: '', desc: 'Electric side mirror with indicator.', price: 420 },
+  { id: 22, cat: 'BODY', name: 'Radiator', size: '', desc: 'Original radiator.', price: 750 },
+  { id: 23, cat: 'BODY', name: 'A/C condensor', size: '', desc: 'Original a/c condeser.', price: 320 },
+  { id: 26, cat: 'BODY', name: 'Grill', size: '', desc: 'Original grill — various makes.', price: 300 },
+  { id: 27, cat: 'BODY', name: 'Alternator', size: '', desc: 'Original alternator.', price: 300 },
 ];
 
 let cart = {};
@@ -500,22 +597,40 @@ function renderFeatured() {
 
 function renderShop(filter = 'ALL') {
   const grid = document.getElementById('shopGrid');
-  const list = filter === 'ALL' ? products : products.filter(p => p.cat === filter);
-  grid.innerHTML = list.map(p => `
-    <div class="product-card">
-      <div class="product-cat">${p.cat}</div>
-      <div class="product-name">${p.name}</div>
-      ${p.size ? `<div class="product-size">${p.size}</div>` : '<div class="product-size"></div>'}
-      <p class="product-desc">${p.desc}</p>
-      <div class="product-footer">
-        <span class="product-price">${fmt(p.price)}</span>
-        <button class="btn-cart" onclick="addToCart(${p.id})">
-          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          ORDER
-        </button>
+  if (filter === 'ALL') {
+    grid.innerHTML = products.map(p => `
+      <div class="product-card">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        ${p.size ? `<div class="product-size">${p.size}</div>` : '<div class="product-size"></div>'}
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <span class="product-price">${fmt(p.price)}</span>
+          <button class="btn-cart" onclick="addToCart(${p.id})">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/></svg>
+            ORDER
+          </button>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  } else {
+    const list = products.filter(p => p.cat === filter);
+    grid.innerHTML = list.map(p => `
+      <div class="product-card">
+        <div class="product-cat">${p.cat}</div>
+        <div class="product-name">${p.name}</div>
+        ${p.size ? `<div class="product-size">${p.size}</div>` : '<div class="product-size"></div>'}
+        <p class="product-desc">${p.desc}</p>
+        <div class="product-footer">
+          <span class="product-price">${fmt(p.price)}</span>
+          <button class="btn-cart" onclick="addToCart(${p.id})">
+            <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/></svg>
+            ORDER
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
 }
 
 function filterProducts(cat, btn) {
@@ -622,8 +737,8 @@ function submitOrder() {
     return `${i.name} (${i.cat}) ×${i.qty} — ${fmt(i.price * i.qty)}`;
   }).join('\n');
 
-  const subject = `New Order from ${first} ${last} — Malinda Torque & Fluids`;
-  const body = `NEW ORDER — MALINDA TORQUE & FLUIDS
+  const subject = `New Order from ${first} ${last} — SPAREXPRESS`;
+  const body = `NEW ORDER — SPAREXPRESS
 ==========================================
 
 CUSTOMER DETAILS
