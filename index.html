@@ -533,34 +533,29 @@
 <!-- NOTIFICATION -->
 <div class="notif" id="notif"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script>
-const products = [
-  
-{ id: 1, cat: 'FLUIDS', name: 'Engine Oil 5W-30 Synthetic', size: '5L', desc: 'Premium fully synthetic motor oil for modern petrol & diesel engines.', price: 449 },
+// Customer site Supabase setup — falls back to local `localProducts` if remote fetch fails
+const SUPABASE_URL = 'https://vyutrlykxskjaaiaeavv.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_4E01IMGQIzlD6huX_spMUQ_GXRcwd0r';
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+let products = [];
+const localProducts = [
+  { id: 1, cat: 'FLUIDS', name: 'Engine Oil 5W-30 Synthetic', size: '5L', desc: 'Premium fully synthetic motor oil for modern petrol & diesel engines.', price: 449 },
   { id: 2, cat: 'FLUIDS', name: 'Brake Fluid DOT 4', size: '500ml', desc: 'High-boiling-point brake fluid suitable for ABS systems.', price: 89 },
   { id: 3, cat: 'FLUIDS', name: 'Coolant / Antifreeze', size: '5L', desc: 'Long-life ethylene glycol coolant. Pre-mixed, ready to use.', price: 159 },
   { id: 4, cat: 'FLUIDS', name: 'Power Steering Fluid', size: '1L', desc: 'Universal hydraulic fluid for power steering systems.', price: 119 },
   { id: 28, cat: 'FLUIDS', name: 'Transmission fluid', size: '2L', desc: 'Universal hydraulic fluid for tramission system.', price: 240 },
   { id: 29, cat: 'FLUIDS', name: 'Differential fluid', size: '1L', desc: 'Specialized, thick lubricant for the differential system.', price: 200 },
-
-  
   { id: 5, cat: 'FILTERS', name: 'Oil Filter', size: '', desc: 'Spin-on oil filter — fits most popular makes.', price: 95 },
   { id: 6, cat: 'FILTERS', name: 'Air Filter', size: '', desc: 'OE-spec air filter for clean combustion and efficiency.', price: 145 },
-  
-  
   { id: 7, cat: 'BRAKES', name: 'Front Brake Pads', size: '', desc: 'Low-dust ceramic brake pads — set of 4.', price: 599 },
   { id: 8, cat: 'BRAKES', name: 'Brake Disc (Pair)', size: '', desc: 'Vented brake rotors, precision balanced.', price: 1299 },
-  
-  
   { id: 9, cat: 'ELECTRICAL', name: 'Car Battery 12V 65AH', size: '', desc: 'Maintenance-free battery with 24-month warranty.', price: 1850 },
   { id: 10, cat: 'ELECTRICAL', name: 'Spark Plugs (Set of 4)', size: '', desc: 'Iridium-tipped spark plugs for optimal ignition.', price: 249 },
   { id: 12, cat: 'ELECTRICAL', name: 'Wiper Blades (Pair)', size: '', desc: 'All-season silicone wiper blades for clear visibility.', price: 185 },
-
-
   { id: 11, cat: 'ENGINE', name: 'Timing Belt Kit', size: '', desc: 'Complete timing belt replacement kit including tensioner.', price: 895 },
-
-  
-  
   { id: 13, cat: 'BODY', name: 'Front Bumper', size: '', desc: 'Front bumper — various makes, primed and ready.', price: 1200 },
   { id: 14, cat: 'BODY', name: 'Rear Bumper', size: '', desc: 'Rear bumper — various makes, primed and ready.', price: 1400 },
   { id: 15, cat: 'BODY', name: 'Front Door (EACH)', size: '', desc: 'OE-fit front door.', price: 1800 },
@@ -578,9 +573,39 @@ const products = [
   { id: 27, cat: 'BODY', name: 'Alternator', size: '', desc: 'Original alternator.', price: 300 },
 ];
 
+// start with local fallback immediately so the page renders fast
+products = [...localProducts];
+
 let cart = {};
 
 function fmt(p) { return 'R ' + p.toLocaleString('en-ZA', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace('.', ','); }
+
+// Replace `products` with remote data when available
+async function loadProductsFromSupabase() {
+  try {
+    const { data, error } = await supabaseClient.from('products').select('*').order('id', { ascending: true });
+    if (error || !data) {
+      console.warn('Supabase fetch failed, using local fallback', error);
+      return;
+    }
+    products = data.map(p => ({
+      id: p.id,
+      cat: p.category || p.cat,
+      name: p.name,
+      size: p.size || '',
+      desc: p.description || p.desc || '',
+      price: Number(p.price),
+      stock: Number(p.stock || 0),
+    }));
+    // re-render components that show products
+    try { renderFeatured(); renderShop(); } catch(e) { /* if functions not defined yet, ignore */ }
+  } catch (err) {
+    console.warn('Error loading products from Supabase', err);
+  }
+}
+
+// attempt a background sync after a short delay so DOM has been initialized
+setTimeout(loadProductsFromSupabase, 400);
 
 function renderFeatured() {
   const grid = document.getElementById('featuredGrid');
