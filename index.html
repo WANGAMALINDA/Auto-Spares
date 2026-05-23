@@ -525,8 +525,8 @@
       <label>VIN & Vihecle Description</label>
       <textarea id="oNotes" placeholder="Write your VIN number and a description of your car for a clearer enquiry..." style="min-height:60px;"></textarea>
     </div>
-    <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitOrder()">PLACE ORDER →</button>
-<p style="font-size:14px;color:var(--muted);text-align:center;margin-top:12px;">Your order details will be sent to SpareXpress Auto. We'll confirm within the hour.</p>
+    <button class="btn-primary" style="width:100%;justify-content:center;" onclick="submitOrder()">PROCESS ORDER</button>
+<p style="font-size:14px;color:var(--muted);text-align:center;margin-top:12px;">Orders are sent directly to SpareXpress Auto for processing.</p>
   </div>
 </div>
 
@@ -741,7 +741,7 @@ function openOrderModal() {
 
 function closeOrderModal() { document.getElementById('orderModal').classList.remove('open'); }
 
-function submitOrder() {
+async function submitOrder() {
   const first = document.getElementById('oFirst').value.trim();
   const last = document.getElementById('oLast').value.trim();
   const phone = document.getElementById('oPhone').value.trim();
@@ -756,44 +756,42 @@ function submitOrder() {
   }
 
   const items = Object.values(cart);
+  if (!items.length) {
+    showNotif('Your cart is empty');
+    return;
+  }
+
   let total = 0;
-  const itemLines = items.map(i => {
+  const payloadItems = items.map(i => {
     total += i.price * i.qty;
-    return `${i.name} (${i.cat}) ×${i.qty} — ${fmt(i.price * i.qty)}`;
-  }).join('\n');
+    return { id: i.id, name: i.name, cat: i.cat, qty: i.qty, price: i.price };
+  });
 
-  const subject = `New Order from ${first} ${last} — SPAREXPRESS`;
-  const body = `NEW ORDER — SPAREXPRESS
-==========================================
+  const payload = {
+    ref: `ORD-${Date.now().toString().slice(-8)}`,
+    customer_name: `${first} ${last}`,
+    phone,
+    email,
+    delivery_address: address,
+    delivery_method: delivery,
+    vin_notes: notes,
+    items: payloadItems,
+    total: total,
+    status: 'NEW',
+  };
 
-CUSTOMER DETAILS
-----------------
-Full Name: ${first} ${last}
-Phone: ${phone}
-Email: ${email}
-Delivery Address: ${address}
-Delivery Preference: ${delivery}
-${notes ? `Special Instructions: ${notes}` : ''}
+  const { data, error } = await supabaseClient.from('orders').insert(payload).select().single();
+  if (error) {
+    console.error('Order save failed:', error);
+    showNotif('Unable to process order. Please try again.', false);
+    return;
+  }
 
-ORDER ITEMS
------------
-${itemLines}
-
-ORDER TOTAL: ${fmt(total)}
-==========================================
-
-Please confirm this order by contacting the customer at ${phone} or ${email}.`;
-
-  const mailtoLink = `mailto:wangamalinda4@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.location.href = mailtoLink;
-
-  // Clear cart
-  setTimeout(() => {
-    cart = {};
-    updateBadge();
-    closeOrderModal();
-    showNotif('Order email opened! Please send it.');
-  }, 800);
+  cart = {};
+  updateBadge();
+  closeOrderModal();
+  showNotif('Order Processed', true);
+  renderShop();
 }
 
 function sendContactEmail() {
